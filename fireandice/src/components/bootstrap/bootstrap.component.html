@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Tailwind Starter Template - Minimal Blog: Tailwind Toolbox</title>
-    <meta name="author" content="name" />
-    <meta name="description" content="description here" />
-    <meta name="keywords" content="keywords,here" />
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <!--Replace with your tailwind.css once created-->
-  </head>
 
-  
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Tailwind Starter Template - Minimal Blog: Tailwind Toolbox</title>
+	<meta name="author" content="name" />
+	<meta name="description" content="description here" />
+	<meta name="keywords" content="keywords,here" />
+	<link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+	<!--Replace with your tailwind.css once created-->
+</head>
+
+
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
 	<nav id="header" class="fixed w-full z-10 top-0 bg-white border-t border-gray-400 shadow">
 
-		<div id="progress" class="h-1 z-20 top-0" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
+		<div id="progress" class="h-1 z-20 top-0"
+			style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
 
 		<div class="w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3">
 
@@ -28,7 +30,8 @@
 			</div>
 
 			<div class="block lg:hidden pr-4">
-				<button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-green-500 appearance-none focus:outline-none">
+				<button id="nav-toggle"
+					class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-900 hover:border-green-500 appearance-none focus:outline-none">
 					<svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 						<title>Menu</title>
 						<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
@@ -36,25 +39,28 @@
 				</button>
 			</div>
 
-			<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20" id="nav-content">
+			<div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-100 md:bg-transparent z-20"
+				id="nav-content">
 				<ul class="list-reset lg:flex justify-end flex-1 items-center">
 					<li class="mr-3">
 						<a class="inline-block py-2 px-4 text-gray-900 font-bold no-underline" href="#">Main page</a>
 					</li>
 					<li class="mr-3">
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#">Characters</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4"
+							href="#">Characters</a>
 					</li>
 					<li class="mr-3">
-						<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4" href="#">Houses</a>
+						<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4"
+							href="/houses">Houses</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-    <div class="container w-1/2 mx-auto pt-20">
-    <router-outlet></router-outlet>
-    </div>
-    <footer class="bg-white border-t border-gray-400 shadow">
+	<div class="container w-1/2 mx-auto pt-20">
+		<router-outlet></router-outlet>
+	</div>
+	<footer class="bg-white border-t border-gray-400 shadow">
 		<div class="container max-w-4xl mx-auto flex py-8">
 
 			<div class="w-full mx-auto flex flex-wrap">
@@ -62,7 +68,8 @@
 					<div class="px-8">
 						<h3 class="font-bold text-gray-900">About</h3>
 						<p class="py-4 text-gray-600 text-sm">
-							Lets explore the world of game of thrones together! You can get to know the characters and houses of Westeros and beyond.
+							Lets explore the world of game of thrones together! You can get to know the characters and
+							houses of Westeros and beyond.
 						</p>
 					</div>
 				</div>
@@ -72,13 +79,16 @@
 						<h3 class="font-bold text-gray-900">Some links</h3>
 						<ul class="list-reset items-center text-sm pt-3">
 							<li>
-								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="https://github.com/rajmunddongo/FireAndIceSurfer">Source code</a>
+								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
+									href="https://github.com/rajmunddongo/FireAndIceSurfer">Source code</a>
 							</li>
 							<li>
-								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="https://www.anapioficeandfire.com/">Public api</a>
+								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
+									href="https://www.anapioficeandfire.com/">Public api</a>
 							</li>
 							<li>
-								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1" href="https://www.hbo.com/game-of-thrones">You can watch the series here.</a>
+								<a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-1"
+									href="https://www.hbo.com/game-of-thrones">You can watch the series here.</a>
 							</li>
 						</ul>
 					</div>
@@ -88,4 +98,4 @@
 
 
 		</div>
-	</footer> 
+	</footer>

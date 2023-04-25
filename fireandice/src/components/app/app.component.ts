@@ -12,32 +12,10 @@ import { HouseService } from 'src/services/house.service';
 export class AppComponent implements OnInit {
   title = 'fireandice';
   public Books: Book[] = [];
-  public Houses: House[] = [];
-
-  public housePage = 1;
 
   constructor(private bookService:BookService, private houseService:HouseService) {}
 
   ngOnInit(): void {
     this.bookService.getFirstTenBooks().subscribe(data=> this.Books=data)
-    this.houseService.getHouses("").subscribe(data=> {
-      this.Houses=data
-      this.Houses.forEach(house => {
-        this.houseService.getOverLord(house.overlord).subscribe(data=> house.overlordName=data.name)
-      });})
-  }
-
-  nextHousePage() {
-    this.housePage++;
-    this.houseService.getHouses("?page="+this.housePage+"&pageSize=10").subscribe(data=> {
-      this.Houses=data
-    })
-  }
-  previousHousePage() {
-    if(this.housePage!=0)
-    this.housePage--;
-    this.houseService.getHouses("?page="+this.housePage+"&pageSize=10").subscribe(data=> {
-      this.Houses=data
-    }) 
   }
 }

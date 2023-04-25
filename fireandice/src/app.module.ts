@@ -6,11 +6,13 @@ import { AppComponent } from './components/app/app.component';
 import { BookService } from 'src/services/book.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { BootstrapComponent } from './components/bootstrap/bootstrap.component';
+import { HouseComponentComponent } from './components/house-component/house-component.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BootstrapComponent
+    BootstrapComponent,
+    HouseComponentComponent
   ],
   imports: [
     BrowserModule,
