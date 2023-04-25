@@ -7,12 +7,14 @@ import { BookService } from 'src/services/book.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 import { BootstrapComponent } from './components/bootstrap/bootstrap.component';
 import { HouseComponentComponent } from './components/house-component/house-component.component';
+import { CharactersComponent } from './components/characters/characters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BootstrapComponent,
-    HouseComponentComponent
+    HouseComponentComponent,
+    CharactersComponent
   ],
   imports: [
     BrowserModule,
