@@ -11,6 +11,6 @@ export class BookService {
     constructor(private http: HttpClient) {}
 
     getFirstTenBooks(): Observable<Book[]> {
-        return this.http.get<Book[]>('https://www.anapioficeandfire.com/api/books');
+        return this.http.get<Book[]>('https://www.anapioficeandfire.com/api/books?page=1&pageSize=100');
       }
 }

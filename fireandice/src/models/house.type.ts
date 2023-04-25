@@ -9,6 +9,7 @@ export interface House {
     currenctLord:string
     heir:string
     overlord:string
+    overlordName:string
     founded:string
     founder:string
     diedOut:string
