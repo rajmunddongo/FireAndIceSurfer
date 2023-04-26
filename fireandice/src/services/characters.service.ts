@@ -15,4 +15,12 @@ export class CharacterService {
     getHouses(path:String): Observable<Character[]> {
         return this.http.get<Character[]>('https://www.anapioficeandfire.com/api/characters'+path);
     }
+
+    getCharacter(id:string | null): Observable<Character>{
+        return this.http.get<Character>("https://www.anapioficeandfire.com/api/characters/"+id);
+    }
+
+    getCharacterFromString(id:string): Observable<Character>{
+        return this.http.get<Character>(id);
+    }
 }

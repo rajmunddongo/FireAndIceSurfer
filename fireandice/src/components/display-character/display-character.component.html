@@ -1,0 +1,52 @@
+<div class="h-10"></div>
+<div *ngIf="character" class="p-4 bg-gray-100 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-2">{{ character.name }}</h2>
+    <p class="mb-1"><strong>Gender:</strong> {{ character.gender || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Culture:</strong> {{ character.culture || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Born:</strong> {{ character.born || 'Unknown' }}</p>
+    <p class="mb-4"><strong>Died:</strong> {{ character.died || 'Unknown' }}</p>
+
+    <h3 class="text-xl font-bold mb-2">Titles:</h3>
+    <ul class="list-disc pl-4 mb-4">
+        <li *ngFor="let title of character.titles">{{ title || 'Unknown' }}</li>
+    </ul>
+
+    <h3 class="text-xl font-bold mb-2">Aliases:</h3>
+    <ul class="list-disc pl-4 mb-4">
+        <li *ngFor="let alias of character.aliases">{{ alias || 'Unknown' }}</li>
+    </ul>
+
+    <p class="mb-1"><strong>Father:</strong> {{ character.father || 'Unknown' }}</p>
+    <p class="mb-4"><strong>Mother:</strong> {{ character.mother || 'Unknown' }}</p>
+
+    <h3 class="text-xl font-bold mb-2">Spouse:</h3>
+    <ul class="list-disc pl-4 mb-4">
+        <li *ngFor="let spouse of character.spouse">{{ spouse || 'Unknown' }}</li>
+    </ul>
+
+    <p class="mb-1"><strong>Allegiances:</strong></p>
+    <ul class="list-disc pl-4 mb-4">
+        <li *ngFor="let allegiance of character.allegiances">{{ allegiance || 'Unknown' }}</li>
+    </ul>
+
+    <h3 class="text-xl font-bold mb-2">Books:</h3>
+    <ul class="list-disc pl-4 mb-4">
+        <li *ngFor="let book of character.bookNames">{{ book || 'Unknown' }}</li>
+    </ul>
+
+    <h3 class="text-xl font-bold mb-2">POV Books:</h3>
+    <ul class="list-disc pl-4 mb-4">
+        <li *ngFor="let povBook of character.povBooks">{{ povBook || 'Unknown' }}</li>
+    </ul>
+
+    <h3 class="text-xl font-bold mb-2">TV Series:</h3>
+    <ul class="list-disc pl-4 mb-4">
+        <li *ngFor="let series of character.tvSeries">{{ series || 'Unknown' }}</li>
+    </ul>
+
+    <h3 class="text-xl font-bold mb-2">Played By:</h3>
+    <ul class="list-disc pl-4 mb-4">
+        <li *ngFor="let actor of character.playedBy">{{ actor || 'Unknown' }}</li>
+    </ul>
+</div>
+<div class="h-10"></div>

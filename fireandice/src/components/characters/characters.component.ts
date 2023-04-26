@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Character } from 'src/models/character.type';
 import { CharacterService } from 'src/services/characters.service';
 
@@ -10,12 +11,12 @@ import { CharacterService } from 'src/services/characters.service';
 export class CharactersComponent {
   public Characters: Character[] = [];
 
-  public characterPage = 1;
+  public characterPage = 2;
 
-  constructor(private characterService: CharacterService) { }
+  constructor(private characterService: CharacterService,private router:Router) { }
 
   ngOnInit(): void {
-    this.characterService.getHouses("").subscribe(data => {
+    this.characterService.getHouses("?page=" + this.characterPage + "&pageSize=10").subscribe(data => {
       this.Characters = data
     })
   }
@@ -27,10 +28,17 @@ export class CharactersComponent {
     })
   }
   previousHousePage() {
-    if (this.characterPage != 0)
+    if (this.characterPage != 2)
       this.characterPage--;
     this.characterService.getHouses("?page=" + this.characterPage + "&pageSize=10").subscribe(data => {
       this.Characters = data
     })
   }
+  goToCharacter(id: number) {
+    const characterIndex = (this.characterPage - 1) * 10 + id;
+    this.router.navigate(['/character'], { queryParams: { index: characterIndex } });
+  }
+  
+  
+  
 }

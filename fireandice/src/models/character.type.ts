@@ -12,6 +12,7 @@ export interface Character {
     spouse:string
     allegiances:string[]
     books:string[]
+    bookNames:string[]
     povBooks:string[]
     tvSeries:string[]
     playedBy:string[]

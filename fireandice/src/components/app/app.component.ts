@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/models/book.type';
 import { House } from 'src/models/house.type';
 import { BookService } from 'src/services/book.service';
@@ -13,9 +14,13 @@ export class AppComponent implements OnInit {
   title = 'fireandice';
   public Books: Book[] = [];
 
-  constructor(private bookService:BookService, private houseService:HouseService) {}
+  constructor(private router:Router ,private bookService:BookService, private houseService:HouseService) {}
 
   ngOnInit(): void {
     this.bookService.getFirstTenBooks().subscribe(data=> this.Books=data)
+  }
+  goToBook(id: number) {
+    const bookIndex = id;
+    this.router.navigate(['/book'], { queryParams: { index: bookIndex } });
   }
 }

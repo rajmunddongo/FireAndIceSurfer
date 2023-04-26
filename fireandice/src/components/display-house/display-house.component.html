@@ -1,0 +1,29 @@
+<div class="h-10"></div>
+<div *ngIf="house" class="p-4 bg-gray-100 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-2">{{ house.name }}</h2>
+    <p class="mb-1"><strong>Region:</strong> {{ house.region || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Coat of Arms:</strong> {{ house.coatOfArms || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Words:</strong> {{ house.word || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Founded:</strong> {{ house.founded || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Founder:</strong> {{ house.founder || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Current Lord:</strong> {{ house.currenctLord || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Heir:</strong> {{ house.heir || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Overlord:</strong> {{ house.overlord || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Founded:</strong> {{ house.founded || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Died Out:</strong> {{ house.diedOut || 'Unknown' }}</p>
+    <h3 class="text-xl font-bold mb-2">Ancestral Weapons:</h3>
+<ul class="list-disc pl-4 mb-4">
+    <li *ngFor="let weapon of house.ancestralWeapons">{{ weapon || 'Unknown' }}</li>
+</ul>
+
+<h3 class="text-xl font-bold mb-2">Cadet Branches:</h3>
+<ul class="list-disc pl-4 mb-4">
+    <li *ngFor="let branch of house.cadetBranches">{{ branch || 'Unknown' }}</li>
+</ul>
+
+<h3 class="text-xl font-bold mb-2">Sworn Members:</h3>
+<ul class="list-disc pl-4 mb-4">
+    <li *ngFor="let member of house.swornMembers">{{ member || 'Unknown' }}</li>
+</ul>
+</div>
+<div class="h-10"></div>
