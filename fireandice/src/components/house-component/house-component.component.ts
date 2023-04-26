@@ -44,8 +44,7 @@ export class HouseComponentComponent {
       this.Houses = data
     })
   }
-  goToHouse(id:number) {
-    const houseIndex = (this.housePage - 1) * 10 + id;
-    this.router.navigate(['/house'], { queryParams: { index: houseIndex } });
+  goToHouse(name:string) {
+    this.router.navigate(['/house'], { queryParams: { name: name } });
   }
 }

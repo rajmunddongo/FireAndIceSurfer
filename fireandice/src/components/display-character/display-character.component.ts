@@ -12,7 +12,7 @@ import { CharacterService } from 'src/services/characters.service';
 })
 export class DisplayCharacterComponent {
   public character !: Character;
-  constructor(private characterService: CharacterService, private bookService: BookService, private route: ActivatedRoute) { }
+  constructor(private characterService: CharacterService, private bookService: BookService, private route: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
     let index = this.route.snapshot.queryParamMap.get('name');
     this.characterService.getCharacter(index).subscribe(data => {
@@ -21,6 +21,9 @@ export class DisplayCharacterComponent {
       forkJoin(bookObservables).subscribe(books => {
         this.character.bookNames = books.map(book => book.name);
       });
+      this.loadFatherCharacter();
+      this.loadMotherCharacter();
+      this.loadSpouseharacter();
       this.loadSwornCharacters();
     });
   }
@@ -34,5 +37,46 @@ export class DisplayCharacterComponent {
     forkJoin(characterObservables).subscribe(characters => {
       this.character.allegianceCharacters = characters.map(character => character);
     });
+  }
+  loadFatherCharacter() {
+    if (!this.character.father) {
+      return;
+    }
+    let characterObservable = this.characterService.getCharacterFromString(this.character.father);
+    characterObservable.subscribe(character => {
+      this.character.fatherCharacter = character;
+    });
+  }
+  loadMotherCharacter() {
+    if (!this.character.mother) {
+      return;
+    }
+    let characterObservable = this.characterService.getCharacterFromString(this.character.mother);
+    characterObservable.subscribe(character => {
+      this.character.motherCharacter = character;
+    });
+  }
+
+  loadSpouseharacter() {
+    if (!this.character.spouse) {
+      return;
+    }
+    let characterObservable = this.characterService.getCharacterFromString(this.character.spouse);
+    characterObservable.subscribe(character => {
+      this.character.spouseCharacter = character;
+    });
+  }
+
+  redirectToCharacterPage(characterName: string): void {
+    if (characterName) {
+      this.router.navigate(['/character'], { queryParams: { name: characterName } }).then(() => {
+        window.location.reload();
+      });
+    }
+  }
+  redirectToHousePage(houseName: string): void {
+    if (houseName) {
+      this.router.navigate(['/house'], { queryParams: { name: houseName } });
+    }
   }
 }

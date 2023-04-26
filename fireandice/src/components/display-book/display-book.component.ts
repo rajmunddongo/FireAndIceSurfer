@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { Book } from 'src/models/book.type';
 import { BookService } from 'src/services/book.service';
@@ -12,7 +12,7 @@ import { CharacterService } from 'src/services/characters.service';
 })
 export class DisplayBookComponent {
   public book !: Book;
-  constructor(private bookService: BookService, private route: ActivatedRoute, private characterService:CharacterService) { }
+  constructor(private bookService: BookService, private route: ActivatedRoute, private characterService:CharacterService,private router:Router) { }
   ngOnInit(): void {
     let index = this.route.snapshot.queryParamMap.get('index');
     this.bookService.getBook(index).subscribe(data => {
@@ -36,5 +36,10 @@ export class DisplayBookComponent {
     forkJoin(povCharacterObservables).subscribe(characters => {
       this.book.povCharacterNames = characters.map(character => character.name);
     });
+  }
+  redirectToCharacterPage(characterName: string): void {
+    if (characterName) {
+      this.router.navigate(['/character'], { queryParams: { name: characterName } });
+    }
   }
 }

@@ -18,12 +18,12 @@
   
     <h3 class="text-xl font-bold mb-2">Cadet Branches:</h3>
     <ul class="list-disc pl-4 mb-4">
-      <li *ngFor="let branch of house.cadetBranchesHouses">{{ branch?.name || 'Unknown' }}</li>
+      <li *ngFor="let branch of house.cadetBranchesHouses"><a (click)="redirectToHousePage(branch.name)">{{ branch?.name || 'Unknown' }}</a></li>
     </ul>
   
     <h3 class="text-xl font-bold mb-2">Sworn Members:</h3>
     <ul class="list-disc pl-4 mb-4">
-      <li *ngFor="let member of house.swornMembersCharacters">{{ member?.name || 'Unknown' }}</li>
+      <li *ngFor="let member of house.swornMembersCharacters"><a (click)="redirectToCharacterPage(member.name)">{{ member?.name || 'Unknown' }}</a></li>
     </ul>
   </div>
   

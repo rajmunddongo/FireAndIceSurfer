@@ -16,17 +16,15 @@
         <li *ngFor="let alias of character.aliases">{{ alias || 'Unknown' }}</li>
     </ul>
 
-    <p class="mb-1"><strong>Father:</strong> {{ character.father || 'Unknown' }}</p>
-    <p class="mb-4"><strong>Mother:</strong> {{ character.mother || 'Unknown' }}</p>
+    <p class="mb-1"><strong>Father:</strong> <a (click)="redirectToCharacterPage(character.fatherCharacter.name)">{{ character.fatherCharacter?.name ?? 'Unknown'}}</a></p>
+    <p class="mb-4"><strong>Mother:</strong> <a (click)="redirectToCharacterPage(character.motherCharacter.name)">{{ character.motherCharacter?.name ?? 'Unknown' }}</a></p>
 
     <h3 class="text-xl font-bold mb-2">Spouse:</h3>
-    <ul class="list-disc pl-4 mb-4">
-        <li *ngFor="let spouse of character.spouse">{{ spouse || 'Unknown' }}</li>
-    </ul>
+    <p class="mb-4"><strong>Spouse:</strong> <a (click)="redirectToCharacterPage(character.spouseCharacter.name)">{{ character.spouseCharacter?.name ?? 'Unkown' }}</a></p>
 
     <p class="mb-1"><strong>Allegiances:</strong></p>
     <ul class="list-disc pl-4 mb-4">
-        <li *ngFor="let allegiance of character.allegianceCharacters">{{ allegiance.name || 'Unknown' }}</li>
+        <li *ngFor="let allegiance of character.allegianceCharacters"><a (click)="redirectToHousePage(allegiance.name)">{{ allegiance.name || 'Unknown' }}</a></li>
     </ul>
 
     <h3 class="text-xl font-bold mb-2">Books:</h3>

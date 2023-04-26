@@ -15,9 +15,9 @@ export class DisplayHouseComponent {
   public house !: House;
   constructor(private router:Router,private houseService: HouseService, private bookService: BookService, private route: ActivatedRoute,private characterService:CharacterService) { }
   ngOnInit(): void {
-    let index = this.route.snapshot.queryParamMap.get('index');
+    let index = this.route.snapshot.queryParamMap.get('name');
     this.houseService.getHouse(index).subscribe(data => {
-      this.house = data;
+      this.house = data[0];
       this.loadHeirCharacter();
       this.loadCurrentLordCharacter();
       this.loadFounderCharacter();
@@ -86,6 +86,14 @@ export class DisplayHouseComponent {
   redirectToCharacterPage(characterName: string): void {
     if (characterName) {
       this.router.navigate(['/character'], { queryParams: { name: characterName } });
+    }
+  }
+  redirectToHousePage(houseName: string): void {
+    if (houseName) {
+      this.router.navigate(['/house'], { queryParams: { name: houseName } })
+        .then(() => {
+          window.location.reload();
+        });
     }
   }
 }

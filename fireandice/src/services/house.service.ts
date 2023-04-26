@@ -18,8 +18,8 @@ export class HouseService {
     getOverLord(url: string) {
         return this.http.get<Character>(url);
     }
-    getHouse(id:string | null): Observable<House>{
-        return this.http.get<House>("https://www.anapioficeandfire.com/api/houses/"+id);
+    getHouse(name:string | null): Observable<House[]>{
+        return this.http.get<House[]>("https://www.anapioficeandfire.com/api/houses?name="+name);
     }
     getHouseFromString(path:string): Observable<House>{
         return this.http.get<House>(path);

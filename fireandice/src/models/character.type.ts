@@ -8,8 +8,11 @@ export interface Character {
     titles:string[]
     aliases:string[]
     father:string
+    fatherCharacter:Character
     mother:string
+    motherCharacter:Character
     spouse:string
+    spouseCharacter:Character
     allegiances:string[]
     allegianceCharacters:Character[]
     books:string[]
