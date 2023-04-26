@@ -21,4 +21,7 @@ export class HouseService {
     getHouse(id:string | null): Observable<House>{
         return this.http.get<House>("https://www.anapioficeandfire.com/api/houses/"+id);
     }
+    getHouseFromString(path:string): Observable<House>{
+        return this.http.get<House>(path);
+    }
 }

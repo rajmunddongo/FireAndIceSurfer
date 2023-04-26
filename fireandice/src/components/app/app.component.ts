@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
     this.bookService.getFirstTenBooks().subscribe(data=> this.Books=data)
   }
   goToBook(id: number) {
-    const bookIndex = id;
+    const bookIndex = id+1;
     this.router.navigate(['/book'], { queryParams: { index: bookIndex } });
   }
 }

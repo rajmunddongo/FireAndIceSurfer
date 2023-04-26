@@ -10,12 +10,12 @@
     <p class="mb-1"><strong>Released:</strong> {{ book.released | date:'MMM d, y' || 'Unknown' }}</p>
     <h3 class="text-xl font-bold mb-2">Characters:</h3>
     <ul class="list-disc pl-4 mb-4">
-        <li *ngFor="let character of book.characters">{{ character || 'Unknown' }}</li>
+        <li *ngFor="let character of book.characterNames">{{ character || 'Unknown' }}</li>
     </ul>
 
     <h3 class="text-xl font-bold mb-2">POV Characters:</h3>
     <ul class="list-disc pl-4 mb-4">
-        <li *ngFor="let povCharacter of book.povCharacters">{{ povCharacter || 'Unknown' }}</li>
+        <li *ngFor="let povCharacter of book.povCharacterNames">{{ povCharacter || 'Unknown' }}</li>
     </ul>
 </div>
 <div class="h-10"></div>

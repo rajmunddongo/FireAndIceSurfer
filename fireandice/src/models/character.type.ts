@@ -11,6 +11,7 @@ export interface Character {
     mother:string
     spouse:string
     allegiances:string[]
+    allegianceCharacters:Character[]
     books:string[]
     bookNames:string[]
     povBooks:string[]

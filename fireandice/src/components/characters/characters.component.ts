@@ -34,9 +34,8 @@ export class CharactersComponent {
       this.Characters = data
     })
   }
-  goToCharacter(id: number) {
-    const characterIndex = (this.characterPage - 1) * 10 + id;
-    this.router.navigate(['/character'], { queryParams: { index: characterIndex } });
+  goToCharacter(name: string) {
+    this.router.navigate(['/character'], { queryParams: { name: name } });
   }
   
   

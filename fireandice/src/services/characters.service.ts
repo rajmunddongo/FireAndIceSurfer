@@ -16,8 +16,8 @@ export class CharacterService {
         return this.http.get<Character[]>('https://www.anapioficeandfire.com/api/characters'+path);
     }
 
-    getCharacter(id:string | null): Observable<Character>{
-        return this.http.get<Character>("https://www.anapioficeandfire.com/api/characters/"+id);
+    getCharacter(name:string | null): Observable<Character[]>{
+        return this.http.get<Character[]>("https://www.anapioficeandfire.com/api/characters?name="+name);
     }
 
     getCharacterFromString(id:string): Observable<Character>{

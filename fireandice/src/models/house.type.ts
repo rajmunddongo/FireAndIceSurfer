@@ -1,3 +1,5 @@
+import { Character } from "./character.type"
+
 export interface House {
     url:string
     name:string
@@ -16,4 +18,12 @@ export interface House {
     ancestralWeapons:string[]
     cadetBranches:string[]
     swornMembers:string[]
+    founderName:string
+    lord:Character
+    currLord:Character
+    founderCharacter:Character
+    heirCharacter:Character
+    swornMembersCharacters:Character[]
+    cadetBranchesHouses:House[]
+
 }

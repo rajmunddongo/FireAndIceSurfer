@@ -10,4 +10,6 @@ export interface Book {
     released:Date
     characters:string[]
     povCharacters:string[]
+    characterNames:string[]
+    povCharacterNames:string[]
 }
