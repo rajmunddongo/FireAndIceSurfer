@@ -4,6 +4,7 @@ import { forkJoin } from 'rxjs';
 import { Character } from 'src/models/character.type';
 import { BookService } from 'src/services/book.service';
 import { CharacterService } from 'src/services/characters.service';
+import { HouseService } from 'src/services/house.service';
 
 @Component({
   selector: 'app-display-character',
@@ -12,7 +13,7 @@ import { CharacterService } from 'src/services/characters.service';
 })
 export class DisplayCharacterComponent {
   public character !: Character;
-  constructor(private characterService: CharacterService, private bookService: BookService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private characterService: CharacterService, private bookService: BookService, private route: ActivatedRoute, private router: Router,private houseService:HouseService) { }
   ngOnInit(): void {
     let index = this.route.snapshot.queryParamMap.get('name');
     this.characterService.getCharacter(index).subscribe(data => {
@@ -32,10 +33,10 @@ export class DisplayCharacterComponent {
     if (!this.character.allegiances) {
       return;
     }
-    let characterObservables = this.character.allegiances.map(url => this.characterService.getCharacterFromString(url));
+    let characterObservables = this.character.allegiances.map(url => this.houseService.getHouseFromString(url));
 
     forkJoin(characterObservables).subscribe(characters => {
-      this.character.allegianceCharacters = characters.map(character => character);
+      this.character.allegianceHouses = characters.map(character => character);
     });
   }
   loadFatherCharacter() {
@@ -77,6 +78,11 @@ export class DisplayCharacterComponent {
   redirectToHousePage(houseName: string): void {
     if (houseName) {
       this.router.navigate(['/house'], { queryParams: { name: houseName } });
+    }
+  }
+  redirectToBookPage(bookName: string): void {
+    if (bookName) {
+      this.router.navigate(['/book'], { queryParams: { name: bookName } });
     }
   }
 }

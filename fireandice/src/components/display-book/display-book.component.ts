@@ -14,9 +14,9 @@ export class DisplayBookComponent {
   public book !: Book;
   constructor(private bookService: BookService, private route: ActivatedRoute, private characterService:CharacterService,private router:Router) { }
   ngOnInit(): void {
-    let index = this.route.snapshot.queryParamMap.get('index');
+    let index = this.route.snapshot.queryParamMap.get('name');
     this.bookService.getBook(index).subscribe(data => {
-      this.book = data;
+      this.book = data[0];
       this.loadCharacterNames();
       this.loadPovCharacterNames();
     });

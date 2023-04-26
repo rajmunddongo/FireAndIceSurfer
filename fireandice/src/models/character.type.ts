@@ -1,3 +1,5 @@
+import { House } from "./house.type"
+
 export interface Character {
     url:string
     name:string
@@ -14,7 +16,7 @@ export interface Character {
     spouse:string
     spouseCharacter:Character
     allegiances:string[]
-    allegianceCharacters:Character[]
+    allegianceHouses:House[]
     books:string[]
     bookNames:string[]
     povBooks:string[]

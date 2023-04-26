@@ -13,8 +13,8 @@ export class BookService {
   getFirstTenBooks(): Observable<Book[]> {
     return this.http.get<Book[]>('https://www.anapioficeandfire.com/api/books?page=1&pageSize=100');
   }
-  getBook(id: string | null): Observable<Book> {
-    return this.http.get<Book>('https://www.anapioficeandfire.com/api/books/' + id);
+  getBook(name: string | null): Observable<Book[]> {
+    return this.http.get<Book[]>('https://www.anapioficeandfire.com/api/books?name=' + name);
   }
   getBookFromString(id: string): Observable<Book> {
     return this.http.get<Book>(id);

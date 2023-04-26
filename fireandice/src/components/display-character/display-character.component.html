@@ -24,12 +24,12 @@
 
     <p class="mb-1"><strong>Allegiances:</strong></p>
     <ul class="list-disc pl-4 mb-4">
-        <li *ngFor="let allegiance of character.allegianceCharacters"><a (click)="redirectToHousePage(allegiance.name)">{{ allegiance.name || 'Unknown' }}</a></li>
+        <li *ngFor="let allegiance of character.allegianceHouses"><a (click)="redirectToHousePage(allegiance.name)">{{ allegiance.name || 'Unknown' }}</a></li>
     </ul>
 
     <h3 class="text-xl font-bold mb-2">Books:</h3>
     <ul class="list-disc pl-4 mb-4">
-        <li *ngFor="let book of character.bookNames">{{ book || 'Unknown' }}</li>
+        <li *ngFor="let book of character.bookNames"><a (click)="redirectToBookPage(book)">{{ book || 'Unknown' }}</a></li>
     </ul>
 
     <h3 class="text-xl font-bold mb-2">POV Books:</h3>
