@@ -1,3 +1,6 @@
+/**
+ * This component is for displaying the info of one character.
+ */
 import { Component } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -12,8 +15,29 @@ import { HouseService } from 'src/services/house.service';
   styleUrls: ['./display-character.component.scss']
 })
 export class DisplayCharacterComponent {
+  /**
+   * The character to display.
+   */
   public character !: Character;
-  constructor(private characterService: CharacterService, private bookService: BookService, private route: ActivatedRoute, private router: Router,private houseService:HouseService) { }
+    /**
+   * Constructor
+   * @param {CharacterService} characterService - Service to obtain characters.
+   * @param {BookService} bookService - Service to obtain books.
+   * @param {ActivatedRoute} route - Route to obtain path param value.
+   * @param {Router} router - Router to navigate.
+   * @param {HouseService} houseService - House service to obtain houses.
+   */
+  constructor(
+    private characterService: CharacterService,
+    private bookService: BookService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private houseService:HouseService
+  ) {}
+
+  /**
+   * Load data for character.
+   */
   ngOnInit(): void {
     let index = this.route.snapshot.queryParamMap.get('name');
     this.characterService.getCharacter(index).subscribe(data => {
@@ -29,6 +53,9 @@ export class DisplayCharacterComponent {
     });
   }
 
+  /**
+   * Load shown characters for the character.
+   */
   loadSwornCharacters() {
     if (!this.character.allegiances) {
       return;
@@ -39,6 +66,10 @@ export class DisplayCharacterComponent {
       this.character.allegianceHouses = characters.map(character => character);
     });
   }
+
+  /**
+   * Load Father character for the character.
+   */
   loadFatherCharacter() {
     if (!this.character.father) {
       return;
@@ -48,6 +79,10 @@ export class DisplayCharacterComponent {
       this.character.fatherCharacter = character;
     });
   }
+
+    /**
+   * Load Mother character for the character.
+   */
   loadMotherCharacter() {
     if (!this.character.mother) {
       return;
@@ -58,6 +93,9 @@ export class DisplayCharacterComponent {
     });
   }
 
+    /**
+   * Load Spouse character for the character.
+   */
   loadSpouseharacter() {
     if (!this.character.spouse) {
       return;
@@ -68,6 +106,10 @@ export class DisplayCharacterComponent {
     });
   }
 
+  /**
+   * Redirect to the info page of the character with the given name.
+   * @param characterName - Name of the character where we navigate
+   */
   redirectToCharacterPage(characterName: string): void {
     if (characterName) {
       this.router.navigate(['/character'], { queryParams: { name: characterName } }).then(() => {
@@ -75,11 +117,21 @@ export class DisplayCharacterComponent {
       });
     }
   }
+
+  /**
+   * Redirect to the house info page of the house with the given name.
+   * @param houseName - Name of the house where we want to navigate.
+   */
   redirectToHousePage(houseName: string): void {
     if (houseName) {
       this.router.navigate(['/house'], { queryParams: { name: houseName } });
     }
   }
+
+  /**
+   * Redirect to the book info page with the selected name.
+   * @param bookName The name of the book where we navigate to.
+   */
   redirectToBookPage(bookName: string): void {
     if (bookName) {
       this.router.navigate(['/book'], { queryParams: { name: bookName } });

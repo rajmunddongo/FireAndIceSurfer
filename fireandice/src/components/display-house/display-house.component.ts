@@ -1,3 +1,6 @@
+/**
+ * This component is for displaying the data of a house.
+ */
 import { Component, KeyValueDiffers } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -12,8 +15,30 @@ import { HouseService } from 'src/services/house.service';
   styleUrls: ['./display-house.component.scss']
 })
 export class DisplayHouseComponent {
+  /**
+   * This is the house we display
+   */
   public house !: House;
-  constructor(private router:Router,private houseService: HouseService, private bookService: BookService, private route: ActivatedRoute,private characterService:CharacterService) { }
+
+  /**
+   * Constructor
+   * @param {Router} router - Router for routing.
+   * @param {HouseService} houseService - Service to obtain houses.
+   * @param {BookService} bookService - Service to obtain books.
+   * @param {ActivatedRoute} route - Route to get path param.
+   * @param {CharacterService} characterService - Service to obtain characters.
+   */
+  constructor(
+    private router: Router,
+    private houseService: HouseService,
+    private bookService: BookService,
+    private route: ActivatedRoute,
+    private characterService: CharacterService
+  ) { }
+
+  /**
+   * Load house and init variables.
+   */
   ngOnInit(): void {
     let index = this.route.snapshot.queryParamMap.get('name');
     this.houseService.getHouse(index).subscribe(data => {
@@ -27,6 +52,9 @@ export class DisplayHouseComponent {
     });
   }
 
+  /**
+   * Load sworn characters for the house.
+   */
   loadSwornCharacters() {
     if (!this.house.swornMembers) {
       return;
@@ -37,6 +65,10 @@ export class DisplayHouseComponent {
       this.house.swornMembersCharacters = characters.map(character => character);
     });
   }
+
+  /**
+ * Load cade branches for the house.
+ */
   loadCadetBranches() {
     if (!this.house.cadetBranches) {
       return;
@@ -47,6 +79,10 @@ export class DisplayHouseComponent {
       this.house.cadetBranchesHouses = houses.map(house => house);
     });
   }
+
+ /**
+ * Load lord character for the house.
+ */
   loadLordCharacter() {
     if (!this.house.overlord) {
       return;
@@ -55,7 +91,11 @@ export class DisplayHouseComponent {
     characterObservable.subscribe(character => {
       this.house.lord = character;
     });
-  }  
+  }
+
+  /**
+   * CurrentLord sworn characters for the house.
+   */
   loadCurrentLordCharacter() {
     if (!this.house.currenctLord) {
       return;
@@ -64,7 +104,11 @@ export class DisplayHouseComponent {
     characterObservable.subscribe(character => {
       this.house.currLord = character;
     });
-  }  
+  }
+
+    /**
+   * Load heir  characters for the house.
+   */
   loadHeirCharacter() {
     if (!this.house.heir) {
       return;
@@ -74,6 +118,10 @@ export class DisplayHouseComponent {
       this.house.heirCharacter = character;
     });
   }
+
+    /**
+   * Load founder characters for the house.
+   */
   loadFounderCharacter() {
     if (!this.house.founder) {
       return;
@@ -83,11 +131,21 @@ export class DisplayHouseComponent {
       this.house.founderCharacter = character;
     });
   }
+
+  /**
+   * Redirect to the character with the given name..
+   * @param {string} characterName - The name of the character.
+   */
   redirectToCharacterPage(characterName: string): void {
     if (characterName) {
       this.router.navigate(['/character'], { queryParams: { name: characterName } });
     }
   }
+
+  /**
+   * Navigate to the house with the given name.
+   * @param houseName - House name where we navigate
+   */
   redirectToHousePage(houseName: string): void {
     if (houseName) {
       this.router.navigate(['/house'], { queryParams: { name: houseName } })
